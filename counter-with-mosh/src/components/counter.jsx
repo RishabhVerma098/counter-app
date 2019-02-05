@@ -5,8 +5,19 @@ import React, { Component } from "react";
 // we use className in span instead of class (since class is a registered keyword
 //two ways to add style are shown
 class Counter extends Component {
+  /*
+  don't know about this ... something related to binding event handler
+  constructor() {
+    super();
+    this.handleIncrement = this.handleIncrement.bind(this);
+  }
+  alternate solution = just use arrow functions
+  */
+
+  //other than functions
   state = {
-    count: 1
+    count: 1,
+    tag: ["tag1", "tag2", "tag3"]
   }; //contain any data which the components need..(property)
 
   style = {
@@ -23,25 +34,39 @@ class Counter extends Component {
         <button
           style={{ fontSize: "20px" }}
           className="btn btn-secondary btn-m"
+          //NOTE* = this.handleIncrement is reference to that fuuction where as this.handleIncrement() is calling that function
+          onClick={this.handleIncrement}
         >
           Increment
         </button>
+        {/** 
+        <ul>
+          {this.state.tag.map(tag => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+        */}
       </React.Fragment>
     );
   }
 
-  formatcount() {
+  //functions
+  formatcount = () => {
     //better
     const { count } = this.state;
     const x = <h6>Zero</h6>;
     return count === 0 ? x : count;
     //original (repition of this.state therefore use better version) 'object destruction'
     // return this.state.count === 0 ? 'Zero':this.state.count
-  }
-  changecolor() {
+  };
+  changecolor = () => {
     let classes = "badge m-2 badge-";
     return (classes += this.state.count === 0 ? "warning" : "primary");
-  }
+  };
+
+  handleIncrement = () => {
+    return console.log("hi", this.state.count);
+  };
 }
 
 export default Counter;

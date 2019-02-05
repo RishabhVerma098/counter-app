@@ -6,18 +6,18 @@ import React, { Component } from "react";
 //two ways to add style are shown
 class Counter extends Component {
   state = {
-    count: 0
+    count: 1
   }; //contain any data which the components need..(property)
 
   style = {
-    fontSize: 10,
+    fontSize: 20,
     fontWeight: "light"
   }; //use camel case notation , 10 os '10px'
 
   render() {
     return (
       <React.Fragment>
-        <span style={this.style} className="badge badge-primary m-2">
+        <span style={this.style} className={this.changecolor()}>
           {this.formatcount()}
         </span>
         <button
@@ -37,6 +37,10 @@ class Counter extends Component {
     return count === 0 ? x : count;
     //original (repition of this.state therefore use better version) 'object destruction'
     // return this.state.count === 0 ? 'Zero':this.state.count
+  }
+  changecolor() {
+    let classes = "badge m-2 badge-";
+    return (classes += this.state.count === 0 ? "warning" : "primary");
   }
 }
 

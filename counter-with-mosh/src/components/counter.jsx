@@ -7,11 +7,19 @@ class Counter extends Component {
   state = {
     count: 0
   }; //contain any data which the components need..(property)
+
+  style = {
+    fontSize: 10,
+    fontWeight: "light"
+  }; //use camel case notation
+
   render() {
     return (
       <React.Fragment>
-        <span className="badge badge-primary m-2">{this.formatcount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <span style={this.style} className="badge badge-primary m-2">
+          {this.formatcount()}
+        </span>
+        <button className="btn btn-secondary btn-m">Increment</button>
       </React.Fragment>
     );
   }

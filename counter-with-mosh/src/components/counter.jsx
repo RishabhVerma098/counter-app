@@ -4,6 +4,7 @@ import React, { Component } from "react";
 // in curly braces we can write any valid javascript code
 // we use className in span instead of class (since class is a registered keyword
 //two ways to add style are shown
+//1:12:59 https://www.youtube.com/watch?v=Ke90Tje7VS0&t=1561s passing event agument for handleIncrement function
 class Counter extends Component {
   /*
   don't know about this ... something related to binding event handler
@@ -13,10 +14,9 @@ class Counter extends Component {
   }
   alternate solution = just use arrow functions
   */
-
   //other than functions
   state = {
-    count: 1,
+    count: this.props.value,
     tag: ["tag1", "tag2", "tag3"]
   }; //contain any data which the components need..(property)
 
